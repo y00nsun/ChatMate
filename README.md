@@ -1,7 +1,7 @@
 # 🗯️ChatMate
 AI Chat Bot Software Project
 
-## 🧑‍🤝‍🧑 Contributors
+## 🧑‍🤝‍🧑 Collaborators
 <table align = "center">
   <tr align = "center">
     <td><a href="https://github.com/its5kay"><img src="https://avatars.githubusercontent.com/u/173331918?v=4"width=150></a></td>
