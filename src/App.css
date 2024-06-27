@@ -1,5 +1,3 @@
-/* app.css */
-
 .App {
   display: flex;
   justify-content: center;
@@ -23,7 +21,7 @@
 .start-button {
   padding: 20px 40px;
   font-size: 24px;
-  background-color: #007bff; /* 블루 색상 */
+  background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -32,7 +30,7 @@
 }
 
 .start-button:hover {
-  background-color: #0056b3; /* 블루 색상 hover */
+  background-color: #0056b3;
 }
 
 .chat-room {
@@ -70,11 +68,11 @@
 }
 
 .message.user .message-bubble {
-  background-color: #007bff; /* User message color */
+  background-color: #007bff;
 }
 
 .message.ai .message-bubble {
-  background-color: #e1e1e1; /* AI message color */
+  background-color: #e1e1e1;
   color: black;
 }
 
@@ -95,7 +93,7 @@
   margin-left: 10px;
   padding: 10px 20px;
   border: none;
-  background-color: #007bff; /* 블루 색상 */
+  background-color: #007bff;
   color: #fff;
   border-radius: 4px;
   cursor: pointer;
@@ -103,7 +101,7 @@
 }
 
 .input-container button:hover {
-  background-color: #0056b3; /* 블루 색상 hover */
+  background-color: #0056b3;
 }
 
 .home-button {
@@ -111,7 +109,7 @@
   margin: 10px;
   padding: 10px 20px;
   border: none;
-  background-color: #007bff; /* 블루 색상 */
+  background-color: #007bff;
   color: #fff;
   border-radius: 4px;
   cursor: pointer;
@@ -119,5 +117,5 @@
 }
 
 .home-button:hover {
-  background-color: #0056b3; /* 블루 색상 hover */
+  background-color: #0056b3;
 }
