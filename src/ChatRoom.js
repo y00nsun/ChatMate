@@ -8,7 +8,7 @@ function ChatRoom({ onBackToHome }) {
     if (input.trim()) {
       setMessages([...messages, { sender: 'user', text: input }]);
       setInput('');
-      // AI 응답을 처리 코드 추가 가능
+      // AI 응답을 처리하는 코드
     }
   };
 
