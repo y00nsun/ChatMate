@@ -9,7 +9,11 @@ config();
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(cors());
+// CORS 설정
+app.use(cors({
+  origin: 'http://localhost:3000' // 프론트엔드 주소
+}));
+
 app.use(bodyParser.json());
 
 app.use('/api/chat', chatRouter);
