@@ -6,10 +6,15 @@ function ChatRoom({ onBackToHome }) {
 
   const handleSendMessage = async () => {
     if (input.trim()) {
-      setMessages([...messages, { sender: 'user', text: input }]);
+
+      // User input
+      const userMessage = { sender: 'user', text: input };
+
+      setMessages((prevMessages) => [...prevMessages, userMessage]);
+      setInput('');
 
      try {
-        // 백엔드 API 호출
+        // Call Backend API
         const response = await fetch('http://localhost:3001/api/chat', {
           method: 'POST',
           headers: {
@@ -25,8 +30,8 @@ function ChatRoom({ onBackToHome }) {
         const data = await response.json();
         const botMessage = { sender: 'bot', text: data.response };
 
-        setMessages([...messages, userMessage, botMessage]);
-        setInput('');
+        setMessages((prevMessages) => [...prevMessages, botMessage]);
+
       } catch (error) {
         console.error('Error:', error);
       }
