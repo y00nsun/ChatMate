@@ -4,11 +4,22 @@ function ChatRoom({ onBackToHome }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (input.trim()) {
       setMessages([...messages, { sender: 'user', text: input }]);
+      // 백엔드 API 호출
+      const response = await fetch('http://localhost:3001/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: input }),
+      });
+      const data = await response.json();
+      const botMessage = { sender: 'bot', text: data.response };
+
+      setMessages([...messages, userMessage, botMessage]);
       setInput('');
-      // AI 응답을 처리하는 코드
     }
   };
 
