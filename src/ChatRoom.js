@@ -7,19 +7,29 @@ function ChatRoom({ onBackToHome }) {
   const handleSendMessage = async () => {
     if (input.trim()) {
       setMessages([...messages, { sender: 'user', text: input }]);
-      // 백엔드 API 호출
-      const response = await fetch('http://localhost:3001/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ message: input }),
-      });
-      const data = await response.json();
-      const botMessage = { sender: 'bot', text: data.response };
 
-      setMessages([...messages, userMessage, botMessage]);
-      setInput('');
+     try {
+        // 백엔드 API 호출
+        const response = await fetch('http://localhost:3001/api/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ message: input }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        const botMessage = { sender: 'bot', text: data.response };
+
+        setMessages([...messages, userMessage, botMessage]);
+        setInput('');
+      } catch (error) {
+        console.error('Error:', error);
+      }
     }
   };
 

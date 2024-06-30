@@ -8,7 +8,7 @@ router.post('/', (req, res) => {
 });
 
 function generateBotResponse(message) {
-  // 간단한 응답 생성 로직 (AI 모델로 대체 가능)
+  // AI 응답 생성 로직
   return `You said: ${message}`;
 }
 
