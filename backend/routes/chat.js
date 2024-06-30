@@ -1,5 +1,6 @@
-const express = require('express');
-const router = express.Router();
+import { Router } from 'express';
+
+const router = Router();
 
 router.post('/', (req, res) => {
   const userMessage = req.body.message;
@@ -12,4 +13,4 @@ function generateBotResponse(message) {
   return `You said: ${message}`;
 }
 
-module.exports = router;
+export default router;
