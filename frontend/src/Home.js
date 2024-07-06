@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import StartButton from './StartButton';
 import ChatRoom from './ChatRoom';
 
-function Home() {
+function Home({}) {
   const [isChatStarted, setIsChatStarted] = useState(false);
 
   const handleStartClick = () => {

@@ -1,11 +1,22 @@
+import React, { useState } from 'react';
 import './App.css';
-import React from 'react';
 import Home from './Home';
+import Login from './Login';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
   return (
     <div className="App">
-      <Home />
+      {isLoggedIn ? <Home onLogout={handleLogout} /> : <Login onLogin={handleLogin} />}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function ChatRoom({ onBackToHome }) {
+function ChatRoom({ onBackToHome, onLogout }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
@@ -41,6 +41,7 @@ function ChatRoom({ onBackToHome }) {
   return (
     <div className="chat-room">
       <button className="home-button" onClick={onBackToHome}>홈으로</button>
+      <button className="logout-button" onClick={onLogout}>로그아웃</button>
       <div className="messages">
         {messages.map((msg, index) => (
           <div key={index} className={`message ${msg.sender}`}>
