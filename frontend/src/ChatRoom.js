@@ -1,40 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function ChatRoom({ onBackToHome, onLogout }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
+  useEffect(() => {
+    const fetchChatHistory = async () => {
+      try {
+        const response = await axios.get('/api/chatHistory');
+        setMessages(response.data);
+      } catch (error) {
+        console.error('Error fetching chat history:', error);
+      }
+    };
+
+    fetchChatHistory();
+  }, []);
+
+  
   const handleSendMessage = async () => {
     if (input.trim()) {
-
-      // User input
-      const userMessage = { sender: 'user', text: input };
-
-      setMessages((prevMessages) => [...prevMessages, userMessage]);
+      setMessages([...messages, { sender: 'user', text: input }]);
       setInput('');
 
-     try {
-        // Call Backend API
-        const response = await fetch('http://localhost:3001/api/chat', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ message: input }),
-        });
+      ///setMessages([...messages, { role: 'user', content: inputMessage }]);
+      ///setInputMessage('');
 
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+      // AI 응답을 처리하는 코드
+      const response = await fetch('http://localhost:5001/api/getResponse', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: input }),
+      });
 
-        const data = await response.json();
-        const botMessage = { sender: 'bot', text: data.response };
-
-        setMessages((prevMessages) => [...prevMessages, botMessage]);
-
-      } catch (error) {
-        console.error('Error:', error);
-      }
+      const data = await response.json();
+      setMessages((prevMessages) => [...prevMessages, { sender: 'ai', text: data.response }]);
     }
   };
 
@@ -62,6 +65,6 @@ function ChatRoom({ onBackToHome, onLogout }) {
       </div>
     </div>
   );
-}
+} 
 
 export default ChatRoom;

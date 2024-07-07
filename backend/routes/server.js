@@ -8,8 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 const AI_API_URL = 'https://api.openai.com/v1/chat/completions';
 
-require('dotenv').config();
-const API_KEY = process.env.API_KEY;
+
 
 app.use(cors());
 app.use(bodyParser.json());

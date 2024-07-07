@@ -4,6 +4,7 @@
   align-items: center;
   height: 100vh;
   background-color: #f0f0f0;
+  white-space: pre-wrap; /* 이 부분 추가 */
 }
 
 .home {
@@ -71,9 +72,14 @@
   background-color: #007bff;
 }
 
+.message.ai {
+  justify-content: flex-start; /* 이 부분 추가 */
+}
+
 .message.ai .message-bubble {
   background-color: #e1e1e1;
   color: black;
+  white-space: pre-wrap;
 }
 
 .input-container {
