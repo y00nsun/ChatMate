@@ -6,9 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
-    "frontend": "cd ../frontend && npm start",
-    "backend": "cd ../backend && npm start"
+    "dev": "concurrently \"npm run start\" \"npm run frontend\"",
+    "frontend": "cd ../frontend && npm start"
   },
   "keywords": [],
   "author": "",
