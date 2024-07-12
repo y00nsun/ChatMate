@@ -1,3 +1,4 @@
+require('dotenv').config({ path: '../.env' }); // api key 때문에 추가
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
@@ -7,6 +8,7 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 5001;
 const AI_API_URL = 'https://api.openai.com/v1/chat/completions';
+const API_KEY = process.env.API_KEY; // api key 때문에 추가
 
 app.use(cors());
 app.use(bodyParser.json());
