@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 import Home from './Home';
 import Login from './Login';
 import ChatRoom from './ChatRoom';
+import Signup from './Signup';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -23,30 +24,32 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/chatroom" element={<ChatRoom />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </div>
     </Router>
   );
 
-  /* return (
+  return (
     <Router>
       <div className="App">
         {isLoggedIn ? (
           <Routes>
             <Route path="/" element={<Home onLogout={handleLogout} />} />
             <Route path="/chatroom" element={<ChatRoom />} />
-            <Route path="*" element={<Navigate to="/" />} /> {// 모든 다른 경로를 홈으로 리다이렉트}
+            <Route path="*" element={<Navigate to="/" />} /> 
           </Routes>
         ) : (
           <Routes>
             <Route path="/login" element={<Login onLogin={handleLogin} />} />
-            <Route path="*" element={<Navigate to="/login" />} /> {// 모든 다른 경로를 로그인으로 리다이렉트}
+            <Route path="/signup" element={<Signup />} />
+            <Route path="*" element={<Navigate to="/login" />} /> 
           </Routes>
         )}
       </div>
     </Router>
-  ); */
+  );
 }
 
 export default App;
